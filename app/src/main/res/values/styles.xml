@@ -1,11 +1,26 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+
+    <style name="AppThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorAccent</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowNoDisplay">false</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <!--<item name="android:clipToPadding">true</item>-->
+    </style>
+    <style name="MenuTextStyle">
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppThemeBase">
     </style>
 
     <style name="AppTheme.NoActionBar">
