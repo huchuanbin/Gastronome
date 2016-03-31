@@ -7,15 +7,17 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hcb.gastronome.ui.base.BaseFragment;
+
 import java.util.List;
 
 /**
  * Created by huchuanbin on 16/3/29.
  */
-public class MainAdapter extends FragmentPagerAdapter{
-    private List<Fragment>listFragment;
+public class TabAdapter extends FragmentPagerAdapter{
+    private List<BaseFragment>listFragment;
     List<String>listTitle;
-    public MainAdapter(FragmentManager fm,List<Fragment>listFragment,List<String>listTitle) {
+    public TabAdapter(FragmentManager fm, List<BaseFragment>listFragment, List<String>listTitle) {
         super(fm);
         this.listFragment=listFragment;
         this.listTitle=listTitle;
