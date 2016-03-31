@@ -51,7 +51,7 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView<Tab
     @Override
     protected void initView(Bundle savedInstanceState) {
 //        initInjector(this).inject(this);
-        deliciousPresenter.setControllerView(this);
+//        deliciousPresenter.setControllerView(this);
         adaptStatusBar(barLayout);
         listFragment = new ArrayList<>();
         listTitle = new ArrayList<>();
