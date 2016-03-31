@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorWhite">
 
 
             <ImageView
@@ -28,26 +28,26 @@
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:scaleType="center"
-                android:src="@mipmap/brighthome" />
+                android:src="@mipmap/bright_home" />
 
             <ImageView
-                android:id="@+id/iv_gastronomy"
+                android:id="@+id/iv_delicious"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:scaleType="center"
-                android:src="@mipmap/darksquare" />
+                android:src="@mipmap/dark_delicious" />
 
 
             <ImageView
-                android:id="@+id/iv_buy"
+                android:id="@+id/iv_commodity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:scaleType="center"
-                android:src="@mipmap/darkfind" />
+                android:src="@mipmap/dark_commodity" />
 
             <ImageView
                 android:id="@+id/iv_mine"
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:scaleType="center"
-                android:src="@mipmap/darkmine" />
+                android:src="@mipmap/dark_mine" />
 
         </android.support.v7.widget.ButtonBarLayout>
 

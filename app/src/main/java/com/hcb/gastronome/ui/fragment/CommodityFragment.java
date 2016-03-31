@@ -8,9 +8,9 @@ import com.hcb.gastronome.ui.base.BaseFragment;
 /**
  * Created by huchuanbin on 16/3/30.
  */
-public class GastronomyFragment extends BaseFragment{
-    public static GastronomyFragment getInstance(){
-        return new GastronomyFragment();
+public class CommodityFragment extends BaseFragment{
+    public static CommodityFragment getInstance(){
+        return new CommodityFragment();
     }
     @Override
     protected void initView(Bundle savedInstanceState) {

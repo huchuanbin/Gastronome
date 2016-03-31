@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by huchuanbin on 16/3/29.
  */
 public abstract class BaseActivity extends RxAppCompatActivity {
-    private ActivityComponent activityCompontent;
+    private ActivityComponent activityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,11 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     public abstract int getLayout();
 
     public ActivityComponent initInjetor(ActivityLifecycleProvider activityLifecycleProvider){
-        activityCompontent = DaggerActivityComponent.builder()
+        activityComponent = DaggerActivityComponent.builder()
                 .applicationComponent(AppConfig.getInstance().getApplicationComponent())
                 .activityModule(new ActivityModule(activityLifecycleProvider))
                 .build();
-        return activityCompontent;
+        return activityComponent;
     }
 
 

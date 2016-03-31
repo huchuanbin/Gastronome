@@ -2,9 +2,7 @@ package com.hcb.gastronome.ui.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.PagerAdapter;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,8 +10,8 @@ import com.hcb.gastronome.R;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseActivity;
 import com.hcb.gastronome.ui.base.BaseFragment;
-import com.hcb.gastronome.ui.fragment.BuyFragment;
-import com.hcb.gastronome.ui.fragment.GastronomyFragment;
+import com.hcb.gastronome.ui.fragment.CommodityFragment;
+import com.hcb.gastronome.ui.fragment.DeliciousFragment;
 import com.hcb.gastronome.ui.fragment.HomeFragment;
 import com.hcb.gastronome.ui.fragment.MineFragment;
 import com.hcb.gastronome.ui.widget.TabViewPager;
@@ -24,15 +22,16 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity  {
+
     private static final String PAGER_INDEX = "pager_index";
 
     @Bind(R.id.tabViewPager)
     TabViewPager tabViewPager;
-    @Bind({R.id.iv_home, R.id.iv_gastronomy, R.id.iv_buy, R.id.iv_mine})
+    @Bind({R.id.iv_home, R.id.iv_delicious, R.id.iv_commodity, R.id.iv_mine})
     List<ImageView> ivTabs;
-    private int[] brightRes = {R.mipmap.brighthome, R.mipmap.brightsquare, R.mipmap.brightfind, R.mipmap.brightmine};
-    private int[] darkRes = {R.mipmap.darkhome, R.mipmap.darksquare, R.mipmap.darkfind, R.mipmap.darkmine};
+    private int[] brightRes = {R.mipmap.bright_home, R.mipmap.bright_delicious, R.mipmap.bright_commodity, R.mipmap.bright_mine};
+    private int[] darkRes = {R.mipmap.dark_home, R.mipmap.dark_delicious, R.mipmap.dark_commodity, R.mipmap.dark_mine};
 
     private PagerAdapter pagerAdapter;
 
@@ -44,7 +43,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        tabViewPager.setPagingEnable(true);
+        tabViewPager.setPagingEnable(false);
         tabViewPager.setOffscreenPageLimit(ivTabs.size());
         int index = 0;
         if (savedInstanceState != null) {
@@ -52,8 +51,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.getInstance());
-        fragments.add(GastronomyFragment.getInstance());
-        fragments.add(BuyFragment.getInstance());
+        fragments.add(DeliciousFragment.getInstance());
+        fragments.add(CommodityFragment.getInstance());
         fragments.add(MineFragment.getInstance());
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), fragments);
         tabViewPager.setAdapter(pagerAdapter);
@@ -72,16 +71,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
     }
-    @OnClick({ R.id.iv_home, R.id.iv_gastronomy, R.id.iv_buy, R.id.iv_mine})
+    @OnClick({ R.id.iv_home, R.id.iv_delicious, R.id.iv_commodity, R.id.iv_mine})
     void clickTabs(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
                 changeTabStyle(0);
                 break;
-            case R.id.iv_gastronomy:
+            case R.id.iv_delicious:
                 changeTabStyle(1);
                 break;
-            case R.id.iv_buy:
+            case R.id.iv_commodity:
                 changeTabStyle(2);
                 break;
             case R.id.iv_mine:
@@ -90,9 +89,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        return false;
-    }
 
 }
