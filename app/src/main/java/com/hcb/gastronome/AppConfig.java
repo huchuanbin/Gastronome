@@ -23,6 +23,8 @@ public class AppConfig extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        config=this;
+        initComponent();
         JuheSDKInitializer.initialize(getApplicationContext());
     }
 

@@ -15,20 +15,25 @@ import dagger.Provides;
  */
 @Module
 public class FragmentModule {
+
+
     private FragmentLifecycleProvider fragmentLifecycleProvider;
-    public FragmentModule(FragmentLifecycleProvider fragmentLifecycleProvider){
-        this.fragmentLifecycleProvider=fragmentLifecycleProvider;
+
+    public FragmentModule(FragmentLifecycleProvider fragmentLifecycleProvider) {
+        this.fragmentLifecycleProvider = fragmentLifecycleProvider;
     }
+
     @Provides
     @FragmentScope
-    FragmentLifecycleProvider getFragmentLifecycleProvider(){
+    FragmentLifecycleProvider getFragmentLifecycleProvider() {
         return this.fragmentLifecycleProvider;
     }
+
     @Provides
     @FragmentScope
     @ContextLevel(ContextLevel.FRAGMENT)
-    Context getContext(){
-        return ((Fragment)fragmentLifecycleProvider).getActivity();
+    Context getContext() {
+        return ((Fragment) fragmentLifecycleProvider).getActivity();
     }
 
 }

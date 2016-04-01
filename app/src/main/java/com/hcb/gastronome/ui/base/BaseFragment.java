@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
  * Created by huchuanbin on 16/3/30.
  */
 public abstract class BaseFragment extends RxFragment {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

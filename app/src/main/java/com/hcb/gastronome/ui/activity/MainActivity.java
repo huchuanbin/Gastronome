@@ -1,7 +1,6 @@
 package com.hcb.gastronome.ui.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,9 +10,9 @@ import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseActivity;
 import com.hcb.gastronome.ui.base.BaseFragment;
 import com.hcb.gastronome.ui.fragment.CommodityFragment;
-import com.hcb.gastronome.ui.fragment.DeliciousFragment;
 import com.hcb.gastronome.ui.fragment.HomeFragment;
 import com.hcb.gastronome.ui.fragment.MineFragment;
+import com.hcb.gastronome.ui.fragment.delicious.DeliciousFragment;
 import com.hcb.gastronome.ui.widget.TabViewPager;
 
 import java.util.ArrayList;
@@ -68,9 +67,11 @@ public class MainActivity extends BaseActivity  {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(PAGER_INDEX,tabViewPager.getCurrentItem());
+        super.onSaveInstanceState(outState);
     }
+
     @OnClick({ R.id.iv_home, R.id.iv_delicious, R.id.iv_commodity, R.id.iv_mine})
     void clickTabs(View view) {
         switch (view.getId()) {

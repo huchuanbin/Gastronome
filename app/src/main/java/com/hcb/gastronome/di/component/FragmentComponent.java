@@ -2,7 +2,7 @@ package com.hcb.gastronome.di.component;
 
 import com.hcb.gastronome.di.modules.FragmentModule;
 import com.hcb.gastronome.di.scope.FragmentScope;
-import com.hcb.gastronome.ui.fragment.DeliciousFragment;
+import com.hcb.gastronome.ui.fragment.delicious.DeliciousFragment;
 
 import dagger.Component;
 
