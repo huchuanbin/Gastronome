@@ -12,32 +12,38 @@ import java.util.List;
  * Created by huchuanbin on 16/3/30.
  */
 public class PageAdapter extends FragmentPagerAdapter {
-    List<BaseFragment> fragments;
-    List<String> tabTitles;
+    List<BaseFragment> listFragment;
+    List<String> listTitles;
 
     public PageAdapter(FragmentManager fm, List<BaseFragment> fragments) {
         super(fm);
-        this.fragments = fragments;
+        this.listFragment = fragments;
+    }
+
+    public PageAdapter(FragmentManager fm, List<BaseFragment> listFragment, List<String> listTitles) {
+        super(fm);
+        this.listFragment = listFragment;
+        this.listTitles = listTitles;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        return listFragment.get(position);
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+        return listFragment.size();
     }
 
     public void setTabTitles(List<String> tabTitles) {
-        this.tabTitles = tabTitles;
+        this.listTitles = tabTitles;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if (tabTitles != null && tabTitles.size() > 0)
-            return tabTitles.get(position);
+        if (listTitles != null && listTitles.size() > 0)
+            return listTitles.get(position);
         return null;
     }
 }

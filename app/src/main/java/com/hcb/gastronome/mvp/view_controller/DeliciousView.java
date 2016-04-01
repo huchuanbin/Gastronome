@@ -1,5 +1,6 @@
 package com.hcb.gastronome.mvp.view_controller;
 
+import com.hcb.gastronome.mvp.model.delicious.DishesData;
 import com.hcb.gastronome.mvp.model.delicious.TabData;
 
 import java.util.List;

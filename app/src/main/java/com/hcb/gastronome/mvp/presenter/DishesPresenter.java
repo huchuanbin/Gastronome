@@ -5,41 +5,44 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.hcb.gastronome.di.ContextLevel;
-import com.hcb.gastronome.mvp.model.delicious.TabData;
-import com.hcb.gastronome.mvp.view_controller.DeliciousView;
+import com.hcb.gastronome.mvp.model.delicious.DishesData;
+import com.hcb.gastronome.mvp.view_controller.DishesView;
 import com.thinkland.sdk.android.DataCallBack;
 import com.thinkland.sdk.android.JuheData;
 import com.thinkland.sdk.android.Parameters;
 import com.trello.rxlifecycle.FragmentLifecycleProvider;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
- * Created by huchuanbin on 16/3/31.
+ * Created by huchuanbin on 16/4/1.
  */
-public class DeliciousPresenter extends BasePresenter<DeliciousView> {
+public class DishesPresenter extends BasePresenter<DishesView> {
 
     private Context context;
     private FragmentLifecycleProvider fragmentLifecycleProvider;
+    private List<DishesData.ResultBean.DataBean> listdDishesData;
 
     @Inject
-    public DeliciousPresenter(@ContextLevel(ContextLevel.FRAGMENT) Context context, FragmentLifecycleProvider fragmentLifecycleProvider) {
+    public DishesPresenter(@ContextLevel(ContextLevel.FRAGMENT) Context context, FragmentLifecycleProvider fragmentLifecycleProvider) {
         this.context = context;
         this.fragmentLifecycleProvider = fragmentLifecycleProvider;
     }
 
-    public void getTabData(int parentid) {
+    public void getTabData(int cid) {
         int id = 46;
-        String url = "http://apis.juhe.cn/cook/category";
+        String url = "http://apis.juhe.cn/cook/index";
         Parameters parameters = new Parameters();
-        parameters.add("parentid", parentid);
+        parameters.add("cid", cid);
 
         JuheData.executeWithAPI(context, id, url, JuheData.GET, parameters, new DataCallBack() {
             @Override
             public void onSuccess(int i, String s) {
-
-                TabData tabData = JSON.parseObject(s, TabData.class);
-                getControllerView().loadServerData(true, tabData);
+                DishesData dishesData = JSON.parseObject(s, DishesData.class);
+                Log.d("DishesPresenter", s);
+                getControllerView().loadServerData(true, dishesData);
 
             }
 
@@ -54,4 +57,5 @@ public class DeliciousPresenter extends BasePresenter<DeliciousView> {
             }
         });
     }
+
 }

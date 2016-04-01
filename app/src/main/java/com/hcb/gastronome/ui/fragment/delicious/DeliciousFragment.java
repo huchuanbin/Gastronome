@@ -11,9 +11,8 @@ import com.hcb.gastronome.R;
 import com.hcb.gastronome.mvp.model.delicious.TabData;
 import com.hcb.gastronome.mvp.presenter.DeliciousPresenter;
 import com.hcb.gastronome.mvp.view_controller.DeliciousView;
-import com.hcb.gastronome.ui.adapter.TabAdapter;
+import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseFragment;
-import com.hcb.gastronome.ui.fragment.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +28,9 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
     private List<BaseFragment> listFragment;
     private List<String> listTitle;
     private List<TabData.ResultBean.ListBean>listBeen;
-    private TabAdapter adapter;
+    private PageAdapter adapter;
     private int num;
+    private DishesFragment dishesFragment;
     @Bind(R.id.bar_layout)
     AppBarLayout barLayout;
     @Bind(R.id.tab_layout)
@@ -78,11 +78,14 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
         tvTitle.setText(tabData.getResult().get(0).getName());
         num = listBeen.size();
         for (int i = 0; i < num; i++) {
-            listFragment.add(new HomeFragment());
+            dishesFragment=DishesFragment.getInstance();
+            listFragment.add(dishesFragment);
+            dishesFragment.getCId(Integer.parseInt(listBeen.get(i).getId()));
             listTitle.add(listBeen.get(i).getName());
         }
-        adapter=new TabAdapter(getActivity().getSupportFragmentManager(),listFragment,listTitle);
+        adapter=new PageAdapter(getActivity().getSupportFragmentManager(),listFragment,listTitle);
         vp.setAdapter(adapter);
+        vp.setOffscreenPageLimit(num);
         tabLayout.setupWithViewPager(vp);
         Log.d("DeliciousFragment", tabData.getResultcode());
     }

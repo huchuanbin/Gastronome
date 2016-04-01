@@ -3,6 +3,7 @@ package com.hcb.gastronome.di.component;
 import com.hcb.gastronome.di.modules.FragmentModule;
 import com.hcb.gastronome.di.scope.FragmentScope;
 import com.hcb.gastronome.ui.fragment.delicious.DeliciousFragment;
+import com.hcb.gastronome.ui.fragment.delicious.DishesFragment;
 
 import dagger.Component;
 
@@ -13,4 +14,6 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = FragmentModule.class)
 public interface FragmentComponent {
     void inject(DeliciousFragment deliciousFragment);
+
+    void inject(DishesFragment dishesFragment);
 }

@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.widget.RelativeLayout;
 
 import com.hcb.gastronome.R;
-import com.hcb.gastronome.ui.adapter.TabAdapter;
+import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseFragment;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import butterknife.Bind;
  * Created by huchuanbin on 16/3/30.
  */
 public class MineFragment extends BaseFragment {
-    private TabAdapter mainAdapter;
+    private PageAdapter mainAdapter;
     private List<Fragment>listFragment;
     private List<String >listTitle;
     @Bind(R.id.rl_bar)
