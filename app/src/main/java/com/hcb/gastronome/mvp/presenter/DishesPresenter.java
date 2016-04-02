@@ -24,6 +24,7 @@ public class DishesPresenter extends BasePresenter<DishesView> {
     private Context context;
     private FragmentLifecycleProvider fragmentLifecycleProvider;
     private List<DishesData.ResultBean.DataBean> listdDishesData;
+    private boolean loadSuccess;
 
     @Inject
     public DishesPresenter(@ContextLevel(ContextLevel.FRAGMENT) Context context, FragmentLifecycleProvider fragmentLifecycleProvider) {
@@ -41,8 +42,13 @@ public class DishesPresenter extends BasePresenter<DishesView> {
             @Override
             public void onSuccess(int i, String s) {
                 DishesData dishesData = JSON.parseObject(s, DishesData.class);
-                Log.d("DishesPresenter", s);
-                getControllerView().loadServerData(true, dishesData);
+                if (dishesData.getResultcode().equals("112")){
+                    loadSuccess=false;
+                }
+                else {
+                    loadSuccess=true;
+                }
+                getControllerView().loadServerData(loadSuccess, dishesData);
 
             }
 

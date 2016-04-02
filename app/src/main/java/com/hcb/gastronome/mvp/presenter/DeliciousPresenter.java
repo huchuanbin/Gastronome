@@ -21,6 +21,7 @@ public class DeliciousPresenter extends BasePresenter<DeliciousView> {
 
     private Context context;
     private FragmentLifecycleProvider fragmentLifecycleProvider;
+    private boolean loadSuccess;
 
     @Inject
     public DeliciousPresenter(@ContextLevel(ContextLevel.FRAGMENT) Context context, FragmentLifecycleProvider fragmentLifecycleProvider) {
@@ -37,9 +38,14 @@ public class DeliciousPresenter extends BasePresenter<DeliciousView> {
         JuheData.executeWithAPI(context, id, url, JuheData.GET, parameters, new DataCallBack() {
             @Override
             public void onSuccess(int i, String s) {
-
+                Log.d("DeliciousPresenter", s);
                 TabData tabData = JSON.parseObject(s, TabData.class);
-                getControllerView().loadServerData(true, tabData);
+                if (tabData.getResultcode().equals("112")) {
+                    loadSuccess = false;
+                } else {
+                    loadSuccess=true;
+                }
+                getControllerView().loadServerData(loadSuccess, tabData);
 
             }
 

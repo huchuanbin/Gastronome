@@ -1,9 +1,13 @@
 package com.hcb.gastronome.ui.fragment.delicious;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.hcb.gastronome.R;
 import com.hcb.gastronome.mvp.model.delicious.DishesData;
@@ -11,6 +15,7 @@ import com.hcb.gastronome.mvp.model.delicious.TabData;
 import com.hcb.gastronome.mvp.presenter.DishesPresenter;
 import com.hcb.gastronome.mvp.view_controller.DeliciousView;
 import com.hcb.gastronome.mvp.view_controller.DishesView;
+import com.hcb.gastronome.ui.activity.MenuActivity;
 import com.hcb.gastronome.ui.adapter.DishesAdapter;
 import com.hcb.gastronome.ui.base.BaseRecycleFragment;
 
@@ -56,7 +61,6 @@ public class DishesFragment extends BaseRecycleFragment implements DishesView {
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(dishesAdapter);
         loadData(cId);
-        Log.d("DishesFragment", "cId:" + cId);
     }
 
     @Override
@@ -67,8 +71,22 @@ public class DishesFragment extends BaseRecycleFragment implements DishesView {
 
     @Override
     public void loadServerData(boolean loadSuccess, DishesData dishesData) {
-        list = new ArrayList<>();
-        list.addAll(dishesData.getResult().getData());
-        dishesAdapter.autoInsertItems(list);
+        if (loadSuccess) {
+            list = new ArrayList<>();
+            list.addAll(dishesData.getResult().getData());
+            dishesAdapter.autoInsertItems(list);
+            dishesAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(list.get(i).getId())));
+        }
+        else {
+            Log.d("DishesFragment", dishesData.getReason());
+        }
+
+    }
+
+    private void interfaceJump(int i) {
+        Intent intent=new Intent(getContext(), MenuActivity.class);
+        intent.putExtra("id",i);
+        Log.d("DishesFragment", "i:" + i);
+        getActivity().startActivity(intent);
     }
 }

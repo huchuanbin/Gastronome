@@ -1,7 +1,10 @@
 package com.hcb.gastronome.ui.base;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import com.hcb.gastronome.AppConfig;
@@ -43,6 +46,21 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     public void init(Bundle savedInstanceState) {
 
+    }
+    public void adaptStatusBar(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            view.setPadding(0, getStatusBarHeight(), 0, 0);
+            view.requestLayout();
+        }
+    }
+    @TargetApi(19)
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 
     private void setStatusBarDarkMode(boolean darkMode, Activity activity) {

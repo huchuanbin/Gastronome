@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlNormal">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="actionMenuTextColor">@color/colorAccent</item>
         <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
         <item name="android:overScrollMode">never</item>
@@ -15,13 +15,13 @@
         <!--<item name="android:fitsSystemWindows">true</item>-->
         <!--<item name="android:clipToPadding">true</item>-->
     </style>
+
     <style name="MenuTextStyle">
         <item name="android:textSize">15dp</item>
     </style>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppThemeBase">
-    </style>
+    <style name="AppTheme" parent="AppThemeBase"></style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -36,8 +36,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="TabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@color/colorPrimary</item>
-        <item name="tabSelectedTextColor">@color/colorPrimary</item>
-    </style>
+
+    <item name="tabIndicatorColor">@color/colorPrimary</item>
+    <item name="tabSelectedTextColor">@color/colorPrimary</item>
+</style>
 </resources>

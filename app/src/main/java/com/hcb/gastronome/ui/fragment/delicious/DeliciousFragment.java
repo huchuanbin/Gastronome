@@ -27,13 +27,13 @@ import butterknife.Bind;
 public class DeliciousFragment extends BaseFragment implements DeliciousView {
     private List<BaseFragment> listFragment;
     private List<String> listTitle;
-    private List<TabData.ResultBean.ListBean>listBeen;
+    private List<TabData.ResultBean.ListBean> listBeen;
     private PageAdapter adapter;
     private int num;
     private DishesFragment dishesFragment;
     @Bind(R.id.bar_layout)
     AppBarLayout barLayout;
-    @Bind(R.id.tab_layout)
+    @Bind(R.id.tabLayout)
     TabLayout tabLayout;
     @Bind(R.id.tv_title)
     TextView tvTitle;
@@ -74,19 +74,21 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
 
     @Override
     public void loadServerData(boolean loadSuccess, TabData tabData) {
-        listBeen=tabData.getResult().get(0).getList();
-        tvTitle.setText(tabData.getResult().get(0).getName());
-        num = listBeen.size();
-        for (int i = 0; i < num; i++) {
-            dishesFragment=DishesFragment.getInstance();
-            listFragment.add(dishesFragment);
-            dishesFragment.getCId(Integer.parseInt(listBeen.get(i).getId()));
-            listTitle.add(listBeen.get(i).getName());
+        if (loadSuccess) {
+            listBeen = tabData.getResult().get(0).getList();
+            tvTitle.setText(tabData.getResult().get(0).getName());
+            num = listBeen.size();
+            for (int i = 0; i < num; i++) {
+                dishesFragment = DishesFragment.getInstance();
+                listFragment.add(dishesFragment);
+                dishesFragment.getCId(Integer.parseInt(listBeen.get(i).getId()));
+                listTitle.add(listBeen.get(i).getName());
+            }
+            adapter = new PageAdapter(getChildFragmentManager(), listFragment, listTitle);
+            vp.setAdapter(adapter);
+            vp.setOffscreenPageLimit(num);
+            tabLayout.setupWithViewPager(vp);
         }
-        adapter=new PageAdapter(getActivity().getSupportFragmentManager(),listFragment,listTitle);
-        vp.setAdapter(adapter);
-        vp.setOffscreenPageLimit(num);
-        tabLayout.setupWithViewPager(vp);
-        Log.d("DeliciousFragment", tabData.getResultcode());
+        Log.d("DeliciousFragment", tabData.getReason()) ;
     }
 }
