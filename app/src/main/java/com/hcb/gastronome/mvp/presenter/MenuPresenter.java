@@ -6,50 +6,42 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.hcb.gastronome.di.ContextLevel;
 import com.hcb.gastronome.mvp.model.delicious.DishesData;
-import com.hcb.gastronome.mvp.view_controller.DishesView;
+import com.hcb.gastronome.mvp.model.delicious.MenuData;
+import com.hcb.gastronome.mvp.view_controller.MenuView;
 import com.thinkland.sdk.android.DataCallBack;
 import com.thinkland.sdk.android.JuheData;
 import com.thinkland.sdk.android.Parameters;
-import com.trello.rxlifecycle.FragmentLifecycleProvider;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 /**
- * Created by huchuanbin on 16/4/1.
+ * Created by huchuanbin on 16/4/2.
  */
-public class DishesPresenter extends BasePresenter<DishesView> {
-
-    private Context context;
-    private FragmentLifecycleProvider fragmentLifecycleProvider;
-    private List<DishesData.ResultBean.DataBean> listdDishesData;
+public class MenuPresenter extends BasePresenter<MenuView>{
     private boolean loadSuccess;
-
+    private Context context;
     @Inject
-    public DishesPresenter(@ContextLevel(ContextLevel.FRAGMENT) Context context, FragmentLifecycleProvider fragmentLifecycleProvider) {
-        this.context = context;
-        this.fragmentLifecycleProvider = fragmentLifecycleProvider;
+    public MenuPresenter (@ContextLevel(ContextLevel.ACTIVITY)Context context){
+        this.context=context;
     }
-
-    public void getTabData(int cid) {
+    public void getMenuData(int i){
         int id = 46;
-        String url = "http://apis.juhe.cn/cook/index";
+        String url = "http://apis.juhe.cn/cook/queryid";
         Parameters parameters = new Parameters();
-        parameters.add("cid", cid);
+        parameters.add("id", i);
 
         JuheData.executeWithAPI(context, id, url, JuheData.GET, parameters, new DataCallBack() {
             @Override
             public void onSuccess(int i, String s) {
-                DishesData dishesData = JSON.parseObject(s, DishesData.class);
+                MenuData menuData = JSON.parseObject(s, MenuData.class);
                 Log.d("DishesPresenter", s);
-                if (dishesData.getResultcode().equals("200")){
+                if (menuData.getResultcode().equals("200")){
                     loadSuccess=true;
                 }
                 else {
                     loadSuccess=false;
                 }
-                getControllerView().loadServerData(loadSuccess, dishesData);
+                getControllerView().result(loadSuccess, menuData);
 
             }
 
@@ -64,5 +56,4 @@ public class DishesPresenter extends BasePresenter<DishesView> {
             }
         });
     }
-
 }

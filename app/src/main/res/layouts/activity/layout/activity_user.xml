@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,11 +11,12 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/rlBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tvUser"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_centerInParent="true"
@@ -24,30 +24,26 @@
                 android:gravity="center"
                 android:text="123"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/title_size" />
+                android:textSize="18dp" />
 
-            <ImageView
+            <TextView
+                android:id="@+id/tvSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/search" />
+                android:text="注册"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
         </RelativeLayout>
-
-        <android.support.design.widget.TabLayout
-            style="@style/TabLayout"
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            app:tabMode="scrollable"></android.support.design.widget.TabLayout>
-
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp"
+    <com.hcb.gastronome.ui.widget.TabViewPager
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/tabViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent"></com.hcb.gastronome.ui.widget.TabViewPager>
+</LinearLayout>

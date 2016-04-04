@@ -2,6 +2,7 @@ package com.hcb.gastronome.di.component;
 
 import com.hcb.gastronome.di.modules.ActivityModule;
 import com.hcb.gastronome.di.scope.ActivityScope;
+import com.hcb.gastronome.ui.activity.MenuActivity;
 
 import dagger.Component;
 
@@ -11,4 +12,5 @@ import dagger.Component;
 @ActivityScope
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class})
 public interface ActivityComponent {
+    void inject(MenuActivity menuActivity);
 }

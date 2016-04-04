@@ -56,7 +56,6 @@ public class DeliciousPresenter extends BasePresenter<DeliciousView> {
 
             @Override
             public void onFailure(int i, String s, Throwable throwable) {
-                Log.d("JuheApi", s);
             }
         });
     }

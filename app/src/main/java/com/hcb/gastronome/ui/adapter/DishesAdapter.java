@@ -33,7 +33,7 @@ public class DishesAdapter extends BaseRecycleAdapter<DishesData.ResultBean.Data
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, DishesData.ResultBean.DataBean data, int position) {
+    public void onBindViewHolder(ViewHolder holder, DishesData.ResultBean.DataBean data, int typePosition, int position) {
         Glide.with(context)
                 .load(data.getAlbums().get(0))
                 .placeholder(R.mipmap.ic_launcher)
@@ -41,6 +41,7 @@ public class DishesAdapter extends BaseRecycleAdapter<DishesData.ResultBean.Data
                 .into(holder.getImageView(R.id.iv_albums));
         holder.getTextView(R.id.tv_title).setText(data.getTitle().toString());
     }
+
 
 
 }

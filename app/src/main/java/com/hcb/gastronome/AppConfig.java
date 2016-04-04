@@ -9,6 +9,9 @@ import com.hcb.gastronome.di.modules.ApiModule;
 import com.hcb.gastronome.di.modules.ApplicationModule;
 import com.thinkland.sdk.android.JuheSDKInitializer;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+
 /**
  * Created by Corbin on 2016/3/21.
  */
@@ -26,6 +29,7 @@ public class AppConfig extends Application {
         config=this;
         initComponent();
         JuheSDKInitializer.initialize(getApplicationContext());
+        Bmob.initialize(this,"e1752dd83322d79679fc888f6e52709e");
     }
 
     private void initComponent() {

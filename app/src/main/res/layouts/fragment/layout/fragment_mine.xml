@@ -24,6 +24,7 @@
                 app:layout_collapseParallaxMultiplier="0.1" />
 
             <ImageView
+                android:id="@+id/ivUserProfile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
@@ -37,7 +38,7 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"></android.support.v7.widget.Toolbar>
 
             <RelativeLayout
-                android:id="@+id/rl_bar"
+                android:id="@+id/rlBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorTransparent"
@@ -45,7 +46,7 @@
                 app:layout_collapseMode="pin">
 
                 <TextView
-                    android:id="@+id/tv_user_nickname"
+                    android:id="@+id/tvUserNickname"
                     android:layout_width="wrap_content"
                     android:layout_height="?attr/actionBarSize"
                     android:layout_centerHorizontal="true"
