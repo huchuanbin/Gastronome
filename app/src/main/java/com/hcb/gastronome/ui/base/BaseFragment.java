@@ -16,22 +16,26 @@ import com.trello.rxlifecycle.FragmentLifecycleProvider;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
+import qiu.niorgai.StatusBarCompat;
 
 /**
  * Created by huchuanbin on 16/3/30.
  */
 public abstract class BaseFragment extends RxFragment {
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), container, false);
-         ButterKnife.bind(this, view);
+
+        ButterKnife.bind(this, view);
         initView(savedInstanceState);
         return view;
     }
@@ -43,9 +47,9 @@ public abstract class BaseFragment extends RxFragment {
                 .build();
     }
 
-    protected abstract void initView(Bundle savedInstanceState);
-
     protected abstract int getLayout();
+
+    protected abstract void initView(Bundle savedInstanceState);
 
     @Override
     public void onResume() {
@@ -58,20 +62,11 @@ public abstract class BaseFragment extends RxFragment {
     }
 
     public void adaptStatusBar(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            view.setPadding(0, getStatusBarHeight(), 0, 0);
+        StatusBarCompat.translucentStatusBar(getActivity());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && view != null) {
+            view.setPadding(0, StatusBarCompat.getStatusBarHeight(getActivity()), 0, 0);
             view.requestLayout();
         }
-    }
-
-    @TargetApi(19)
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
     }
 
 }

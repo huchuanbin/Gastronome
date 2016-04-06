@@ -1,11 +1,10 @@
 package com.hcb.gastronome.mvp.presenter;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.hcb.gastronome.di.ContextLevel;
-import com.hcb.gastronome.mvp.model.User;
+import com.hcb.gastronome.mvp.model.bmob.UserData;
 import com.hcb.gastronome.mvp.view_controller.UserView;
 import com.trello.rxlifecycle.FragmentLifecycleProvider;
 
@@ -41,7 +40,7 @@ public class UserPresenter extends BasePresenter<UserView> {
     }
 
     public void register(String phone, String code, String password) {
-        User user = new User();
+        UserData user = new UserData();
         user.setMobilePhoneNumber(phone);
         user.setPassword(password);
         user.signOrLogin(context, code, new SaveListener() {

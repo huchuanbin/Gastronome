@@ -89,6 +89,5 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
             vp.setOffscreenPageLimit(num);
             tabLayout.setupWithViewPager(vp);
         }
-        Log.d("DeliciousFragment", tabData.getReason()) ;
     }
 }

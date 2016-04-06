@@ -24,6 +24,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by huchuanbin on 16/4/2.
@@ -54,7 +55,7 @@ public class MenuActivity extends BaseActivity implements MenuView {
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        initInjetor(this).inject(this);
+        initInjector(this).inject(this);
         menuPresenter.setControllerView(this);
         title = "   ";
         intent = getIntent();
@@ -66,14 +67,17 @@ public class MenuActivity extends BaseActivity implements MenuView {
                 .placeholder(R.mipmap.ic_launcher)
                 .dontAnimate()
                 .into(imageView);
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         adaptStatusBar(rlBar);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(menuAdapter);
         menuPresenter.getMenuData(id);
     }
-
+@OnClick(R.id.rlBar)
+public void backOff(){
+    finish();
+}
     @Override
     public void result(boolean success, MenuData menuData) {
         if (success) {

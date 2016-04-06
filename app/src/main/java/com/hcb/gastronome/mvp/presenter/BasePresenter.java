@@ -9,10 +9,12 @@ import dagger.Component;
  */
 public abstract class BasePresenter<T extends BaseView> {
     private T controllerView;
-    public  void setControllerView(T view){
-        controllerView=view;
+
+    public void setControllerView(T view) {
+        controllerView = view;
     }
-    public T getControllerView(){
+
+    public T getControllerView() {
         return controllerView;
     }
 }

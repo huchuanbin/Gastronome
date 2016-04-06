@@ -34,7 +34,6 @@ public class MenuPresenter extends BasePresenter<MenuView>{
             @Override
             public void onSuccess(int i, String s) {
                 MenuData menuData = JSON.parseObject(s, MenuData.class);
-                Log.d("DishesPresenter", s);
                 if (menuData.getResultcode().equals("200")){
                     loadSuccess=true;
                 }
@@ -42,7 +41,6 @@ public class MenuPresenter extends BasePresenter<MenuView>{
                     loadSuccess=false;
                 }
                 getControllerView().result(loadSuccess, menuData);
-
             }
 
             @Override

@@ -2,6 +2,7 @@ package com.hcb.gastronome.di.component;
 
 import com.hcb.gastronome.di.modules.FragmentModule;
 import com.hcb.gastronome.di.scope.FragmentScope;
+import com.hcb.gastronome.ui.fragment.HomeFragment;
 import com.hcb.gastronome.ui.fragment.delicious.DeliciousFragment;
 import com.hcb.gastronome.ui.fragment.delicious.DishesFragment;
 import com.hcb.gastronome.ui.fragment.user.LoginFragment;
@@ -22,4 +23,6 @@ public interface FragmentComponent {
     void inject(RegisterFragment registerFragment);
 
     void inject(LoginFragment loginFragment);
+
+    void inject(HomeFragment homeFragment);
 }
