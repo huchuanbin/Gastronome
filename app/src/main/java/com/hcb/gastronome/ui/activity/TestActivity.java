@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.hcb.gastronome.R;
-import com.hcb.gastronome.mvp.model.bmob.BannerData;
+import com.hcb.gastronome.mvp.model.bmob.Banner;
 
 import java.util.List;
 
@@ -21,16 +21,20 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BmobQuery query = new BmobQuery("Banner");
-        query.findObjects(this, new FindListener<BannerData>() {
+        query.findObjects(this, new FindListener<Banner>() {
             @Override
-            public void onSuccess(List<BannerData> list) {
+            public void onSuccess(List<Banner> list) {
 //                Log.d("TestActivity", "list.size():" + list.size());
-                Log.d("TestActivity", list.get(0).getUrl());
+//                Log.d("TestActivity", list.get(0).getUrl());
                 Log.d("TestActivity", list.get(0).getPic().getFileUrl(TestActivity.this));
+                Log.d("TestActivity", list.get(0).getId());
+                Log.d("TestActivity", list.get(0).getType());
             }
 
             @Override
             public void onError(int i, String s) {
+                Log.d("TestActivity", "i:" + i);
+                Log.d("TestActivity", s);
 
             }
         });

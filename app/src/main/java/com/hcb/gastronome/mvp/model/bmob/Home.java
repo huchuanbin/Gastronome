@@ -1,9 +1,11 @@
-package com.hcb.gastronome.mvp.model.home;
+package com.hcb.gastronome.mvp.model.bmob;
+
+import cn.bmob.v3.BmobObject;
 
 /**
- * Created by huchuanbin on 16/4/5.
+ * Created by huchuanbin on 16/4/7.
  */
-public class HomeData {
+public class Home extends BmobObject {
     private String id;
     private String title;
     private String albums;

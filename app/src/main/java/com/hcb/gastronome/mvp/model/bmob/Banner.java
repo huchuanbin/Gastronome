@@ -1,12 +1,17 @@
-package com.hcb.gastronome.mvp.model.home;
+package com.hcb.gastronome.mvp.model.bmob;
+
+import java.io.File;
+
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by huchuanbin on 16/4/6.
  */
-public class BannerData {
+public class Banner extends BmobObject {
     private String id;
-    private String url;
     private String type;
+    private BmobFile pic;
 
     public String getType() {
         return type;
@@ -16,14 +21,6 @@ public class BannerData {
         this.type = type;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getId() {
         return id;
     }
@@ -31,4 +28,13 @@ public class BannerData {
     public void setId(String id) {
         this.id = id;
     }
+
+    public BmobFile getPic() {
+        return pic;
+    }
+
+    public void setPic(BmobFile pic) {
+        this.pic = pic;
+    }
+
 }
