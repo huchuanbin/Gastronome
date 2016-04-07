@@ -28,30 +28,13 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/tool_bar"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorTransparent"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="   Corbin"></android.support.v7.widget.Toolbar>
-            <RelativeLayout
-                android:id="@+id/rlBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorTransparent"
-                android:minHeight="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
-                <ImageView
-                    android:id="@+id/ivBackOff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="13dp"
-                    android:src="@mipmap/back_off"
-                    app:layout_collapseMode="pin" />
-
-            </RelativeLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView

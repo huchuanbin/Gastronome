@@ -34,8 +34,8 @@ public class MenuActivity extends BaseActivity implements MenuView {
     private int id;
     private String title;
     private String albums;
-    @Bind(R.id.rlBar)
-    RelativeLayout rlBar;
+//    @Bind(R.id.rlBar)
+//    RelativeLayout rlBar;
     @Bind(R.id.tool_bar)
     Toolbar toolbar;
     @Bind(R.id.recycleView)
@@ -57,27 +57,33 @@ public class MenuActivity extends BaseActivity implements MenuView {
         super.init(savedInstanceState);
         initInjector(this).inject(this);
         menuPresenter.setControllerView(this);
-        title = "   ";
+//        title = "   ";
         intent = getIntent();
         id = intent.getIntExtra("id", 0);
-        title += intent.getStringExtra("title");
+        title = intent.getStringExtra("title");
         albums = intent.getStringExtra("albums");
+        setSupportActionBar(toolbar);
         toolbar.setTitle(title);
         Glide.with(this).load(albums)
                 .placeholder(R.mipmap.ic_launcher)
                 .dontAnimate()
                 .into(imageView);
         setSupportActionBar(toolbar);
-        adaptStatusBar(rlBar);
+//        toolbar.setDescendantFocusability(t);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        initToolBar(title);
+//        adaptStatusBar(rlBar);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(menuAdapter);
         menuPresenter.getMenuData(id);
     }
-@OnClick(R.id.rlBar)
-public void backOff(){
-    finish();
-}
+
+//@OnClick(R.id.rlBar)
+//public void backOff(){
+//    finish();
+//}
     @Override
     public void result(boolean success, MenuData menuData) {
         if (success) {

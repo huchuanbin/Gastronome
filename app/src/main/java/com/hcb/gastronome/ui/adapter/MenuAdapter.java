@@ -53,7 +53,6 @@ public class MenuAdapter extends BaseRecycleAdapter<MenuData.ResultBean.DataBean
     @Override
     public void onBindViewHolder(ViewHolder holder, MenuData.ResultBean.DataBean.StepsBean data, int typePosition, int position) {
         if (getItemViewType(typePosition) == TYPE_TITLE) {
-            holder.getTextView(R.id.tvTags).setText(menuData.getResult().getData().get(0).getTitle());
             holder.getTextView(R.id.tvImtro).setText(menuData.getResult().getData().get(0).getImtro());
             holder.getTextView(R.id.tvIngredients).setText(menuData.getResult().getData().get(0).getIngredients());
             holder.getTextView(R.id.tvBurden).setText(menuData.getResult().getData().get(0).getBurden());
