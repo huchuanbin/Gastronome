@@ -58,10 +58,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
         return R.layout.fragment_home;
     }
 
-    @OnClick(R.id.ivSearch)
-    public void search() {
-        Toast.makeText(getContext(), "Corbin", Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public void result(boolean success, AllHomeData allHomeData) {

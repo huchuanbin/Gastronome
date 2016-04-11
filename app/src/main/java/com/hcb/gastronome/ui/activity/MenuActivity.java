@@ -34,8 +34,8 @@ public class MenuActivity extends BaseActivity implements MenuView {
     private int id;
     private String title;
     private String albums;
-//    @Bind(R.id.rlBar)
-//    RelativeLayout rlBar;
+    @Bind(R.id.rlBar)
+    RelativeLayout rlBar;
     @Bind(R.id.tool_bar)
     Toolbar toolbar;
     @Bind(R.id.recycleView)
@@ -63,6 +63,7 @@ public class MenuActivity extends BaseActivity implements MenuView {
         title = intent.getStringExtra("title");
         albums = intent.getStringExtra("albums");
         setSupportActionBar(toolbar);
+        adaptStatusBar(rlBar);
         toolbar.setTitle(title);
         Glide.with(this).load(albums)
                 .placeholder(R.mipmap.ic_launcher)
