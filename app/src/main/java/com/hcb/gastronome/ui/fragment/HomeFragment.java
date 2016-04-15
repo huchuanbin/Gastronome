@@ -64,7 +64,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public void result(boolean success, AllHomeData allHomeData) {
         homeAdapter.setBannerData(allHomeData.getListBanner());
         homeAdapter.resetItems(allHomeData.getListHome());
-        homeAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(allHomeData.getListHome().get(i).getId()), allHomeData.getListHome().get(i).getTitle(), allHomeData.getListHome().get(i).getAlbums()));
+        homeAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(allHomeData.getListHome().get(i-1).getId()), allHomeData.getListHome().get(i-1).getTitle(), allHomeData.getListHome().get(i-1).getAlbums()));
     }
 
     private void interfaceJump(int id, String title, String albums) {

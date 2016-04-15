@@ -61,7 +61,6 @@ public class DishesFragment extends BaseRecycleFragment implements DishesView {
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(dishesAdapter);
         loadData(cId);
-        Log.d("DishesFragment", "cId:" + cId);
     }
 
     @Override
@@ -79,14 +78,12 @@ public class DishesFragment extends BaseRecycleFragment implements DishesView {
             dishesAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(list.get(i).getId()),list.get(i).getTitle(),list.get(i).getAlbums().get(0)));
         }
         else {
-            Log.d("DishesFragment", dishesData.getReason());
         }
 
     }
 
     private void interfaceJump(int id,String title,String albums) {
         Intent intent=new Intent(getContext(), MenuActivity.class);
-        Log.d("DishesFragment", "i:" + id);
         intent.putExtra("id",id);
         intent.putExtra("title",title);
         intent.putExtra("albums",albums);

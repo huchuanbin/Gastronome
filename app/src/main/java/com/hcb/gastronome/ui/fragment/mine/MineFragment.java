@@ -1,9 +1,8 @@
-package com.hcb.gastronome.ui.fragment;
+package com.hcb.gastronome.ui.fragment.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,7 +11,7 @@ import com.hcb.gastronome.R;
 import com.hcb.gastronome.ui.activity.UserActivity;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseFragment;
-import com.hcb.gastronome.ui.fragment.delicious.DishesFragment;
+import com.hcb.gastronome.ui.fragment.HomeFragment;
 import com.hcb.gastronome.ui.widget.TabViewPager;
 
 import java.util.ArrayList;
@@ -47,9 +46,9 @@ public class MineFragment extends BaseFragment {
         adaptStatusBar(rlBar);
         listFragment = new ArrayList<>();
         listTitle = new ArrayList<>();
+        listFragment.add(CollectionFragment.getInstance());
         listFragment.add(HomeFragment.getInstance());
-        listFragment.add(HomeFragment.getInstance());
-        listTitle.add("tab 1");
+        listTitle.add("我的收藏");
         listTitle.add("tab 2");
         adapter = new PageAdapter(getChildFragmentManager(), listFragment, listTitle);
         tabViewPager.setAdapter(adapter);
@@ -59,7 +58,7 @@ public class MineFragment extends BaseFragment {
     }
 
     private void interfaceJump() {
-        Intent intent=new Intent(getContext(), UserActivity.class);
+        Intent intent = new Intent(getContext(), UserActivity.class);
         getActivity().startActivity(intent);
     }
 

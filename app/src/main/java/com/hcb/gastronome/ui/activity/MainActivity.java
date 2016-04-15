@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hcb.gastronome.R;
+import com.hcb.gastronome.mvp.model.bmob._User;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseActivity;
 import com.hcb.gastronome.ui.base.BaseFragment;
 import com.hcb.gastronome.ui.fragment.CommodityFragment;
 import com.hcb.gastronome.ui.fragment.HomeFragment;
-import com.hcb.gastronome.ui.fragment.MineFragment;
 import com.hcb.gastronome.ui.fragment.delicious.DeliciousFragment;
+import com.hcb.gastronome.ui.fragment.mine.MineFragment;
 import com.hcb.gastronome.ui.widget.TabViewPager;
 
 import java.util.ArrayList;
@@ -20,10 +21,12 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends BaseActivity  {
 
     private static final String PAGER_INDEX = "pager_index";
+    public static String userId;
 
     @Bind(R.id.tabViewPager)
     TabViewPager tabViewPager;
@@ -56,6 +59,13 @@ public class MainActivity extends BaseActivity  {
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), fragments);
         tabViewPager.setAdapter(pagerAdapter);
         changeTabStyle(index);
+        BmobUser userData=  _User.getCurrentUser(MainActivity.this);
+        if (userData!=null){
+            userId=userData.getObjectId();
+        }
+        else {
+            userId="-1";
+        }
     }
 
     private void changeTabStyle(int index) {

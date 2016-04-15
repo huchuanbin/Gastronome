@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.hcb.gastronome.di.ContextLevel;
-import com.hcb.gastronome.mvp.model.bmob.UserData;
+import com.hcb.gastronome.mvp.model.bmob._User;
 import com.hcb.gastronome.mvp.view_controller.UserView;
 import com.trello.rxlifecycle.FragmentLifecycleProvider;
 
@@ -33,14 +33,13 @@ public class UserPresenter extends BasePresenter<UserView> {
         BmobSMS.requestSMSCode(context, phone, "Gastronome", new RequestSMSCodeListener() {
             @Override
             public void done(Integer integer, BmobException e) {
-//                Log.d("UserPresenter", integer.toString());
                 getControllerView().result(0, true, "发送成功");
             }
         });
     }
 
     public void register(String phone, String code, String password) {
-        UserData user = new UserData();
+        _User user = new _User();
         user.setMobilePhoneNumber(phone);
         user.setPassword(password);
         user.signOrLogin(context, code, new SaveListener() {
