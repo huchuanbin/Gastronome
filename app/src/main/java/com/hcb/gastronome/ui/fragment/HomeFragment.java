@@ -50,6 +50,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+        homeAdapter.setHeaderCount(1);
         recyclerView.setAdapter(homeAdapter);
     }
 
@@ -61,10 +62,9 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     public void result(boolean success, AllHomeData allHomeData) {
-        homeAdapter.setHeaderCount(1);
         homeAdapter.setBannerData(allHomeData.getListBanner());
         homeAdapter.resetItems(allHomeData.getListHome());
-        homeAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(allHomeData.getListHome().get(i-1).getId()), allHomeData.getListHome().get(i-1).getTitle(), allHomeData.getListHome().get(i-1).getAlbums()));
+        homeAdapter.setOnItemClickListener((adapterView, view, i, l) -> interfaceJump(Integer.parseInt(allHomeData.getListHome().get(i).getId()), allHomeData.getListHome().get(i).getTitle(), allHomeData.getListHome().get(i).getAlbums()));
     }
 
     private void interfaceJump(int id, String title, String albums) {

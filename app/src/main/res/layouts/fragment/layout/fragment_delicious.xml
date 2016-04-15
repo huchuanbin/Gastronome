@@ -53,266 +53,267 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:paddingTop="70dp"
         android:layout_height="match_parent">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/label"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_1"
+            android:id="@+id/fab1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/seasoning"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_2"
+            android:id="@+id/fab1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/fruit_flavor"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_3"
+            android:id="@+id/fab1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/other_tools"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_4"
+            android:id="@+id/fab1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:elevation="0dp"
             android:src="@mipmap/multi_taste"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_5"
+            android:id="@+id/fab1_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/basic_taste"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_6"
+            android:id="@+id/fab1_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/other_tools"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv1_7"
+            android:id="@+id/fab1_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/basic_gong"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_1"
+            android:id="@+id/fab2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/solar_term"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_2"
+            android:id="@+id/fab2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/daily"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_3"
+            android:id="@+id/fab2_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/rice_tofu"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_4"
+            android:id="@+id/fab2_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/fruit"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_5"
+            android:id="@+id/fab2_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/vegetables"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_6"
+            android:id="@+id/fab2_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/seafood"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv2_7"
+            android:id="@+id/fab2_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/eggs"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_1"
+            android:id="@+id/fab3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/livestock_meat"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_2"
+            android:id="@+id/fab3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/disease"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_3"
+            android:id="@+id/fab3_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/crowd"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_4"
+            android:id="@+id/fab3_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/other_dishes"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_5"
+            android:id="@+id/fab3_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/soup_and_soup"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_6"
+            android:id="@+id/fab3_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/west_point"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv3_7"
+            android:id="@+id/fab3_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/staple_food"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_1"
+            android:id="@+id/fab4_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/dish"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_2"
+            android:id="@+id/fab4_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/technological_taste"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_3"
+            android:id="@+id/fab4_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/scene"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_4"
+            android:id="@+id/fab4_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/effect"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_5"
+            android:id="@+id/fab4_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/seasonal_ingredients"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_6"
+            android:id="@+id/fab4_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/cuisine"
             app:fabSize="mini" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/iv4_7"
+            android:id="@+id/fab4_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical|right"
             android:layout_margin="@dimen/fab_margin"
             android:src="@mipmap/dish_dishes"
             app:fabSize="mini" />

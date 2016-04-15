@@ -2,20 +2,16 @@ package com.hcb.gastronome.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.hcb.gastronome.R;
 import com.hcb.gastronome.di.ContextLevel;
 import com.hcb.gastronome.mvp.model.home.BannerData;
 import com.hcb.gastronome.mvp.model.home.HomeData;
-import com.hcb.gastronome.mvp.view_controller.HomeView;
 import com.hcb.gastronome.ui.adapter.base.BaseRecycleAdapter;
 import com.hcb.gastronome.ui.adapter.base.ViewHolder;
 import com.jude.rollviewpager.RollPagerView;
@@ -81,11 +77,15 @@ public class HomeAdapter extends BaseRecycleAdapter<HomeData> {
         }
         if (getItemViewType(typePosition) == TYPE_TOPIC) {
             Glide.with(context)
-                    .load(getItems().get(position).getAlbums())
+                    .load(data.getAlbums())
                     .placeholder(R.mipmap.ic_launcher)
                     .centerCrop()
                     .dontAnimate()
                     .into(holder.getImageView(R.id.iv_albums));
+//            Bitmap defaultImage=BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+//            Bitmap errorImage=BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+//            ImageCacheManager.loadImage(context, data.getAlbums(), holder.getImageView(R.id.iv_albums), defaultImage, errorImage,400,200);
+         holder.getTextView(R.id.tv_title).setText(data.getTitle());
         }
     }
 
@@ -107,6 +107,9 @@ public class HomeAdapter extends BaseRecycleAdapter<HomeData> {
                     .centerCrop()
                     .dontAnimate()
                     .into(imageView);
+//            Bitmap defaultImage=BitmapFactory.decodeResource(imageView(), R.mipmap.ic_launcher);
+//            Bitmap errorImage= BitmapFactory.decodeResource(getResources(), R.drawable.load_error);
+//            ImageCacheManager.loadImage(this, url, imageView, defaultImage, errorImage);
             return imageView;
         }
 

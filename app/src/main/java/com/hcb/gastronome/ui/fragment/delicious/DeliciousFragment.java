@@ -41,6 +41,10 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
     private int num;
     private boolean isOpen = false;
     private DishesFragment dishesFragment;
+    private int[] fabs = {R.id.fab1_1, R.id.fab1_2, R.id.fab1_3, R.id.fab1_4, R.id.fab1_5, R.id.fab1_6, R.id.fab1_7
+            , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
+            , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
+            , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7};
     @Bind(R.id.bar_layout)
     AppBarLayout barLayout;
     @Bind(R.id.tabLayout)
@@ -51,10 +55,10 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
     ViewPager vp;
     @Bind(R.id.fab)
     FloatingActionButton fab;
-    @Bind({R.id.iv1_1, R.id.iv1_2, R.id.iv1_3, R.id.iv1_4, R.id.iv1_5, R.id.iv1_6, R.id.iv1_7
-            , R.id.iv2_1, R.id.iv2_2, R.id.iv2_3, R.id.iv2_4, R.id.iv2_5, R.id.iv2_6, R.id.iv2_7
-            , R.id.iv3_1, R.id.iv3_2, R.id.iv3_3, R.id.iv3_4, R.id.iv3_5, R.id.iv3_6, R.id.iv3_7
-            , R.id.iv4_1, R.id.iv4_2, R.id.iv4_3, R.id.iv4_4, R.id.iv4_5, R.id.iv4_6, R.id.iv4_7})
+    @Bind({R.id.fab1_1, R.id.fab1_2, R.id.fab1_3, R.id.fab1_4, R.id.fab1_5, R.id.fab1_6, R.id.fab1_7
+            , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
+            , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
+            , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7})
     List<FloatingActionButton> fabList;
     @Inject
     DeliciousPresenter deliciousPresenter;
@@ -78,8 +82,6 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
         initInjector(this).inject(this);
         deliciousPresenter.setControllerView(this);
         adaptStatusBar(barLayout);
-        listFragment = new ArrayList<>();
-        listTitle = new ArrayList<>();
         loadData(10001);
         fabState(isOpen);
     }
@@ -94,7 +96,7 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
             isOpen = false;
             fabState(isOpen);
         } else {
-            for (int i=0;i<fabList.size();i++) {
+            for (int i = 0; i < fabList.size(); i++) {
                 openFab(i);
             }
             isOpen = true;
@@ -119,9 +121,24 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
         valueAnimator.setDuration(300);
         valueAnimator.setObjectValues(new PointF(fab.getLeft(), fab.getTop()));
         valueAnimator.setInterpolator(new LinearInterpolator());
-        if (position<4) {
-            final float x = (float) Math.sin(Math.PI / 2 * (position+1) / 4);
-            final float y = (float) Math.cos(Math.PI / 2 * (position+1) / 4);
+        if (position < 4) {
+            final float x = (float) Math.sin(Math.PI * (position) / 3);
+            final float y = (float) Math.cos(Math.PI * (position) / 3);
+            valueAnimator.setEvaluator((fraction, start, end) -> {
+                PointF pointF = new PointF();
+                pointF.x = fab.getLeft() - fraction * 3 * 50 * x;
+                pointF.y = fab.getTop() - fraction * 3 * 50 * y;
+                return pointF;
+            });
+            valueAnimator.start();
+            valueAnimator.addUpdateListener(animator -> {
+                PointF pointF = (PointF) animator.getAnimatedValue();
+                fabList.get(position).setX(pointF.x);
+                fabList.get(position).setY(pointF.y);
+            });
+        } else if (position < 12) {
+            final float x = (float) Math.sin(Math.PI * (position - 4) / 7);
+            final float y = (float) Math.cos(Math.PI * (position - 4) / 7);
             valueAnimator.setEvaluator((fraction, start, end) -> {
                 PointF pointF = new PointF();
                 pointF.x = fab.getLeft() - fraction * 3 * 100 * x;
@@ -134,14 +151,13 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
                 fabList.get(position).setX(pointF.x);
                 fabList.get(position).setY(pointF.y);
             });
-        }
-        else if (position<12){
-            final float x = (float) Math.sin(Math.PI / 2 * (position-3) / 8);
-            final float y = (float) Math.cos(Math.PI / 2 * (position-3) / 8);
+        } else {
+            final float x = (float) Math.sin(Math.PI * (position - 12) / 15);
+            final float y = (float) Math.cos(Math.PI * (position - 12) / 15);
             valueAnimator.setEvaluator((fraction, start, end) -> {
                 PointF pointF = new PointF();
-                pointF.x = fab.getLeft() - fraction * 3 * 200 * x;
-                pointF.y = fab.getTop() - fraction * 3 * 200 * y;
+                pointF.x = fab.getLeft() - fraction * 3 * 150 * x;
+                pointF.y = fab.getTop() - fraction * 3 * 150 * y;
                 return pointF;
             });
             valueAnimator.start();
@@ -151,41 +167,13 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
                 fabList.get(position).setY(pointF.y);
             });
         }
-        else {
-            final float x = (float) Math.sin(Math.PI / 2 * (position-11) / 16);
-            final float y = (float) Math.cos(Math.PI / 2 * (position-11) / 16);
-            valueAnimator.setEvaluator((fraction, start, end) -> {
-                PointF pointF = new PointF();
-                pointF.x = fab.getLeft() - fraction * 3 * 300 * x;
-                pointF.y = fab.getTop() - fraction * 3 * 300 * y;
-                return pointF;
-            });
-            valueAnimator.start();
-            valueAnimator.addUpdateListener(animator -> {
-                PointF pointF = (PointF) animator.getAnimatedValue();
-                fabList.get(position).setX(pointF.x);
-                fabList.get(position).setY(pointF.y);
-            });
-        }
-//        valueAnimator.setEvaluator((fraction, start, end) -> {
-//            PointF pointF = new PointF();
-//            pointF.x = fab.getLeft() - fraction * 5 * 100;
-//            pointF.y = fab.getTop() - fraction * 5 * 100;
-//            return pointF;
-//        });
-//        valueAnimator.start();
-//        valueAnimator.addUpdateListener(animator -> {
-//            PointF pointF = (PointF) animator.getAnimatedValue();
-//            fabList.get(0).setX(pointF.x);
-//            fabList.get(0).setY(pointF.y);
-//            Log.d("DeliciousFragment", "Math.sin(1):" + Math.sin(Math.PI / 6));
-//        });
     }
-
 
     @Override
     public void loadServerData(boolean loadSuccess, TabData tabData) {
         if (loadSuccess) {
+            listFragment = new ArrayList<>();
+            listTitle = new ArrayList<>();
             listBeen = tabData.getResult().get(0).getList();
             tvTitle.setText(tabData.getResult().get(0).getName());
             num = listBeen.size();
@@ -199,6 +187,108 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
             vp.setAdapter(adapter);
             vp.setOffscreenPageLimit(num);
             tabLayout.setupWithViewPager(vp);
+            Log.d("DeliciousFragment", tabData.getResult().get(0).getName());
         }
+    }
+
+    @OnClick({R.id.fab1_1, R.id.fab1_2, R.id.fab1_3, R.id.fab1_4, R.id.fab1_5, R.id.fab1_6, R.id.fab1_7
+            , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
+            , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
+            , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7})
+    public void fabClick(View view) {
+
+        switch (view.getId()) {
+
+            case R.id.fab1_1:
+                jump(10028);
+                break;
+            case R.id.fab1_2:
+                jump(10027);
+                break;
+            case R.id.fab1_3:
+                jump(10026);
+                break;
+            case R.id.fab1_4:
+                jump(10025);
+                break;
+            case R.id.fab1_5:
+                jump(10024);
+                break;
+            case R.id.fab1_6:
+                jump(10023);
+                break;
+            case R.id.fab1_7:
+                jump(10022);
+                break;
+            case R.id.fab2_1:
+                jump(10021);
+                break;
+            case R.id.fab2_2:
+                jump(10020);
+                break;
+            case R.id.fab2_3:
+                jump(10019);
+                break;
+            case R.id.fab2_4:
+                jump(10018);
+                break;
+            case R.id.fab2_5:
+                jump(10017);
+                break;
+            case R.id.fab2_6:
+                jump(10016);
+                break;
+            case R.id.fab2_7:
+                jump(10015);
+                break;
+            case R.id.fab3_1:
+                jump(10014);
+                break;
+            case R.id.fab3_2:
+                jump(10013);
+                break;
+            case R.id.fab3_3:
+                jump(10012);
+                break;
+            case R.id.fab3_4:
+                jump(10011);
+                break;
+            case R.id.fab3_5:
+                jump(10010);
+                break;
+            case R.id.fab3_6:
+                jump(10009);
+                break;
+            case R.id.fab3_7:
+                jump(10008);
+                break;
+            case R.id.fab4_1:
+                jump(10007);
+                break;
+            case R.id.fab4_2:
+                jump(10006);
+                break;
+            case R.id.fab4_3:
+                jump(10005);
+                break;
+            case R.id.fab4_4:
+                jump(10004);
+                break;
+            case R.id.fab4_5:
+                jump(10003);
+                break;
+            case R.id.fab4_6:
+                jump(10002);
+                break;
+            case R.id.fab4_7:
+                jump(10001);
+                break;
+
+        }
+    }
+
+    private void jump(int position) {
+        loadData(position);
+        fabState(false);
     }
 }

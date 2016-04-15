@@ -32,7 +32,10 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
         this.headerCount = headerCount;
     }
 
-    public int getHeaderCount(){return headerCount;}
+    public int getHeaderCount() {
+        return headerCount;
+    }
+
     /**
      * 设置数据源
      *
@@ -50,7 +53,8 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
 
     public void resetItems(List<T> list) {
         this.list.clear();
-        this.list.addAll(list);
+        if (list != null)
+            this.list.addAll(list);
         notifyDataSetChanged();
     }
 
@@ -67,7 +71,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
         if (list == null)
             return;
         this.list.addAll(list);
-        notifyItemRangeInserted(position, list.size());
+        notifyItemRangeInserted(position + headerCount, list.size());
     }
 
     public void addItem(T t) {
@@ -76,7 +80,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
 
     public void addItem(T t, int position) {
         this.list.add(position, t);
-        notifyItemInserted(position);
+        notifyItemInserted(position + headerCount);
     }
 
 
@@ -128,7 +132,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
     public T removeItem(int position) {
         if (list != null) {
             T t = list.get(position);
-            notifyItemRemoved(position);
+            notifyItemRemoved(position+headerCount);
             list.remove(position);
             return t;
         }
@@ -168,8 +172,10 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
     }
 
     public int getPosition() {
-        if (position < headerCount) {
+        if (list.size() == 0)
             return 0;
+        if (position < headerCount) {
+            return position;
         } else {
             return (position - headerCount) % list.size();
         }
