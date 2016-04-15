@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hcb.gastronome.R;
+import com.hcb.gastronome.ui.activity.SettingActivity;
 import com.hcb.gastronome.ui.activity.UserActivity;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseFragment;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by huchuanbin on 16/3/30.
@@ -36,6 +38,8 @@ public class MineFragment extends BaseFragment {
     TextView tvUserNickname;
     @Bind(R.id.ivUserProfile)
     ImageView ivUserProfile;
+    @Bind(R.id.iv_setting)
+    ImageView ivSetting;
 
     public static MineFragment getInstance() {
         return new MineFragment();
@@ -47,9 +51,9 @@ public class MineFragment extends BaseFragment {
         listFragment = new ArrayList<>();
         listTitle = new ArrayList<>();
         listFragment.add(CollectionFragment.getInstance());
-        listFragment.add(HomeFragment.getInstance());
+//        listFragment.add(HomeFragment.getInstance());
         listTitle.add("我的收藏");
-        listTitle.add("tab 2");
+//        listTitle.add("tab 2");
         adapter = new PageAdapter(getChildFragmentManager(), listFragment, listTitle);
         tabViewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(tabViewPager);
@@ -65,5 +69,11 @@ public class MineFragment extends BaseFragment {
     @Override
     protected int getLayout() {
         return R.layout.fragment_mine;
+    }
+
+    @OnClick(R.id.iv_setting)
+    public void setting() {
+        Intent intent = new Intent(getActivity(), SettingActivity.class);
+        getActivity().startActivity(intent);
     }
 }

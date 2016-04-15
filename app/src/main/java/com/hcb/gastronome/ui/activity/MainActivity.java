@@ -30,10 +30,10 @@ public class MainActivity extends BaseActivity  {
 
     @Bind(R.id.tabViewPager)
     TabViewPager tabViewPager;
-    @Bind({R.id.iv_home, R.id.iv_delicious, R.id.iv_commodity, R.id.iv_mine})
+    @Bind({R.id.iv_home, R.id.iv_delicious, R.id.iv_mine})
     List<ImageView> ivTabs;
-    private int[] brightRes = {R.mipmap.bright_home, R.mipmap.bright_delicious, R.mipmap.bright_commodity, R.mipmap.bright_mine};
-    private int[] darkRes = {R.mipmap.dark_home, R.mipmap.dark_delicious, R.mipmap.dark_commodity, R.mipmap.dark_mine};
+    private int[] brightRes = {R.mipmap.bright_home, R.mipmap.bright_delicious, R.mipmap.bright_mine};
+    private int[] darkRes = {R.mipmap.dark_home, R.mipmap.dark_delicious, R.mipmap.dark_mine};
 
     private PagerAdapter pagerAdapter;
 
@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity  {
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.getInstance());
         fragments.add(DeliciousFragment.getInstance());
-        fragments.add(CommodityFragment.getInstance());
+//        fragments.add(CommodityFragment.getInstance());
         fragments.add(MineFragment.getInstance());
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), fragments);
         tabViewPager.setAdapter(pagerAdapter);
@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity  {
         super.onSaveInstanceState(outState);
     }
 
-    @OnClick({ R.id.iv_home, R.id.iv_delicious, R.id.iv_commodity, R.id.iv_mine})
+    @OnClick({ R.id.iv_home, R.id.iv_delicious, R.id.iv_mine})
     void clickTabs(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
@@ -91,11 +91,11 @@ public class MainActivity extends BaseActivity  {
             case R.id.iv_delicious:
                 changeTabStyle(1);
                 break;
-            case R.id.iv_commodity:
-                changeTabStyle(2);
-                break;
+//            case R.id.iv_commodity:
+//                changeTabStyle(2);
+//                break;
             case R.id.iv_mine:
-                changeTabStyle(3);
+                changeTabStyle(2);
                 break;
         }
     }

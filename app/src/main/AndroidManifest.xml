@@ -33,6 +33,8 @@
             android:name=".ui.activity.MenuActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.activity.UserActivity" />
+        <activity android:name=".ui.activity.SettingActivity"/>
+        <activity android:name=".ui.activity.BindEmailActivity"/>
     </application>
 
 </manifest>

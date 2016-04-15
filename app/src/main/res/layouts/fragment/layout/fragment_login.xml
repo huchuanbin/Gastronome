@@ -11,8 +11,9 @@
         android:background="@drawable/rounded_rectangle"
         android:gravity="left"
         android:hint="请输入手机号"
-        android:padding="12dp"
         android:inputType="number"
+        android:padding="12dp"
+        android:textColor="@color/colorWrite"
         android:textColorHint="#c7c7cd"
         android:textSize="18dp" />
 
@@ -22,11 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_rectangle"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         android:gravity="left"
         android:hint="请输入密码"
         android:inputType="textPassword"
-        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         android:padding="12dp"
+        android:textColor="@color/colorWrite"
         android:textColorHint="#c7c7cd"
         android:textSize="18dp" />
 

@@ -5,12 +5,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hcb.gastronome.R;
+import com.hcb.gastronome.event.UserEvent;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseActivity;
+import com.hcb.gastronome.ui.base.BaseEventActivity;
 import com.hcb.gastronome.ui.base.BaseFragment;
+import com.hcb.gastronome.ui.fragment.user.ForgetPwdFragment;
 import com.hcb.gastronome.ui.fragment.user.LoginFragment;
 import com.hcb.gastronome.ui.fragment.user.RegisterFragment;
 import com.hcb.gastronome.ui.widget.TabViewPager;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +26,7 @@ import butterknife.OnClick;
 /**
  * Created by huchuanbin on 16/4/2.
  */
-public class UserActivity extends BaseActivity {
+public class UserActivity extends BaseEventActivity {
     private PageAdapter pageAdapter;
     private boolean state;
     private List<BaseFragment> listFragment;
@@ -46,6 +51,7 @@ public class UserActivity extends BaseActivity {
         listFragment = new ArrayList<>();
         listFragment.add(LoginFragment.getInstance());
         listFragment.add(RegisterFragment.getInstance());
+        listFragment.add(ForgetPwdFragment.getInstance());
         pageAdapter=new PageAdapter(getSupportFragmentManager(),listFragment);
         tabViewPager.setAdapter(pageAdapter);
         tabViewPager.setCurrentItem(0);
@@ -62,5 +68,12 @@ public class UserActivity extends BaseActivity {
             state=true;
             tvSwitch.setText("登录");
         }
+    }
+    @Subscribe
+    public void forgetPwd(UserEvent userEvent){
+        if (userEvent.getForgetPwd()==UserEvent.FORGETPWD){
+            tabViewPager.setCurrentItem(2,false);
+        }
+
     }
 }
