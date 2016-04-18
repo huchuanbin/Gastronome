@@ -51,12 +51,14 @@ public class BindEmailActivity extends BaseActivity {
                 _User.requestEmailVerify(BindEmailActivity.this, email, new EmailVerifyListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(BindEmailActivity.this, "请求验证邮件成功，请到" + email + "邮箱中进行激活。", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BindEmailActivity.this, "请求验证邮件成功，请到" + email +
+                                "邮箱中进行激活。", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
-                        Toast.makeText(BindEmailActivity.this, "请求验证邮件失败:" + s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BindEmailActivity.this, "请求验证邮件失败:" + s
+                                , Toast.LENGTH_SHORT).show();
                         Log.d("BindEmailActivity", i + s);
                     }
                 });

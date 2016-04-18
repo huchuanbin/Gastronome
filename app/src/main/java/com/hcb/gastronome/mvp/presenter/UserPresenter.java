@@ -58,6 +58,7 @@ public class UserPresenter extends BasePresenter<UserView> {
             }
         });
     }
+
     public void resetPassword(String phone,String code,String newpassword){
         _User.resetPasswordBySMSCode(context, code, newpassword, new ResetPasswordByCodeListener() {
             @Override

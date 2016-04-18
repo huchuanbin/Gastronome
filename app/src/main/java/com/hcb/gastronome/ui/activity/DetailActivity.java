@@ -18,8 +18,6 @@ public class DetailActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-//    @Bind(R.id.btn)
-//    Button btn;
     @Bind(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 

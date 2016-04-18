@@ -50,7 +50,6 @@ public class MenuPresenter extends BasePresenter<MenuView>{
 
             @Override
             public void onFailure(int i, String s, Throwable throwable) {
-                Log.d("JuheApi", s);
             }
         });
     }

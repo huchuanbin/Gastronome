@@ -19,6 +19,7 @@ import com.hcb.gastronome.R;
 import com.hcb.gastronome.mvp.model.delicious.TabData;
 import com.hcb.gastronome.mvp.presenter.DeliciousPresenter;
 import com.hcb.gastronome.mvp.view_controller.DeliciousView;
+import com.hcb.gastronome.ui.activity.SearchActivity;
 import com.hcb.gastronome.ui.adapter.PageAdapter;
 import com.hcb.gastronome.ui.base.BaseFragment;
 
@@ -34,6 +35,23 @@ import butterknife.OnClick;
  * Created by huchuanbin on 16/3/30.
  */
 public class DeliciousFragment extends BaseFragment implements DeliciousView {
+    @Bind(R.id.bar_layout)
+    AppBarLayout barLayout;
+    @Bind(R.id.tabLayout)
+    TabLayout tabLayout;
+    @Bind(R.id.tv_title)
+    TextView tvTitle;
+    @Bind(R.id.vp)
+    ViewPager vp;
+    @Bind(R.id.iv_search)
+    ImageView ivSearch;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+    @Bind({R.id.fab1_1, R.id.fab1_2, R.id.fab1_3, R.id.fab1_4, R.id.fab1_5, R.id.fab1_6, R.id.fab1_7
+            , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
+            , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
+            , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7})
+    List<FloatingActionButton> fabList;
     private List<BaseFragment> listFragment;
     private List<String> listTitle;
     private List<TabData.ResultBean.ListBean> listBeen;
@@ -45,21 +63,6 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
             , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
             , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
             , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7};
-    @Bind(R.id.bar_layout)
-    AppBarLayout barLayout;
-    @Bind(R.id.tabLayout)
-    TabLayout tabLayout;
-    @Bind(R.id.tv_title)
-    TextView tvTitle;
-    @Bind(R.id.vp)
-    ViewPager vp;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
-    @Bind({R.id.fab1_1, R.id.fab1_2, R.id.fab1_3, R.id.fab1_4, R.id.fab1_5, R.id.fab1_6, R.id.fab1_7
-            , R.id.fab2_1, R.id.fab2_2, R.id.fab2_3, R.id.fab2_4, R.id.fab2_5, R.id.fab2_6, R.id.fab2_7
-            , R.id.fab3_1, R.id.fab3_2, R.id.fab3_3, R.id.fab3_4, R.id.fab3_5, R.id.fab3_6, R.id.fab3_7
-            , R.id.fab4_1, R.id.fab4_2, R.id.fab4_3, R.id.fab4_4, R.id.fab4_5, R.id.fab4_6, R.id.fab4_7})
-    List<FloatingActionButton> fabList;
     @Inject
     DeliciousPresenter deliciousPresenter;
 
@@ -88,6 +91,12 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
 
     private void loadData(int b) {
         deliciousPresenter.getTabData(b);
+    }
+
+    @OnClick(R.id.iv_search)
+    public void search() {
+        Intent intent = new Intent(getActivity(), SearchActivity.class);
+        getActivity().startActivity(intent);
     }
 
     @OnClick(R.id.fab)
@@ -187,7 +196,6 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
             vp.setAdapter(adapter);
             vp.setOffscreenPageLimit(num);
             tabLayout.setupWithViewPager(vp);
-            Log.d("DeliciousFragment", tabData.getResult().get(0).getName());
         }
     }
 
@@ -286,7 +294,6 @@ public class DeliciousFragment extends BaseFragment implements DeliciousView {
 
         }
     }
-
     private void jump(int position) {
         loadData(position);
         fabState(false);
